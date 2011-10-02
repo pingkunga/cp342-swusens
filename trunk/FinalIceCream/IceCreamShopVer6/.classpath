@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="RedCarpet1/src"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc5_g.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc5.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc5dms_g.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc5dms.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc6_g.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc6dms_g.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/ojdbc6dms.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/jdbc/lib/simplefan.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/BeanInfo.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/clientos.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/commonos.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/hessian-3.1.1.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/hsqldb.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/itext-1.4.8.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/iText-2.1.7.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/iText-rtf-2.1.7.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/jcalendar.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/jnlp-servlet.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/jnlp.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/log4j-1.2.7.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/poi-2.0-RC2-20040102.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/pooler.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/serveros.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/srcclientos.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/srccommonos.jar"/>
+	<classpathentry kind="lib" path="RedCarpet1/OpenSwing-jars-only-2.4.2/build/srcserveros.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="RedCarpet1/bin"/>
+</classpath>

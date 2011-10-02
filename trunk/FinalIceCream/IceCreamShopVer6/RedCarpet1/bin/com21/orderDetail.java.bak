@@ -1,0 +1,262 @@
+package com21;
+
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import javax.swing.JScrollPane;
+import java.awt.Rectangle;
+import javax.swing.JTable;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+
+public class orderDetail extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel jContentPane = null;
+	private JScrollPane jScrollPaneOdetail = null;
+	private JTable jTableOdetail = null;
+	private JPanel jPanelOdetail = null;
+	private JButton jButtonOK = null;
+	private JLabel jLabel = null;
+	private JLabel jLabel1 = null;
+	private JLabel jLabel2 = null;
+	private JLabel jLabel3 = null;
+	private JLabel jLabel4 = null;
+	private JLabel jLaOrderDate = null;
+	private JLabel jLaOrderTime = null;
+	private JLabel jLaTotal = null;
+	private JLabel jLaEmp = null;
+	private JLabel jLaOrderId = null;
+	
+	private Connect connect = null;  //  @jve:decl-index=0:
+	private JLabel jLabelbg = null;
+
+	/**
+	 * This is the default constructor
+	 */
+	public orderDetail(int Oid) {
+		super();
+		initialize();
+		initOrderHead(Oid);
+		initOrderDetail(Oid);
+	}
+	
+	private void initOrderHead(int Oid){
+		String sql = "SELECT OA.ORDER_ID, E.EMP_NAME, E.EMP_SURNAME, TO_CHAR(OA.ORDER_DATE,'DD MONTH YYYY', 'NLS_CALENDAR=''THAI BUDDHA') ORDER_DATE, " +
+				"TO_CHAR(OA.ORDER_DATE,'HH:MM', 'NLS_CALENDAR=''THAI BUDDHA') ORDER_DATE_HR, OA.TOTAL " +
+				"FROM ORDER_HEADS OA JOIN EMPLOYEES E " +
+				"ON (OA.EMP_ID = E.EMP_ID) "+
+				"WHERE OA.ORDER_ID ="+"'"+Oid+"'";
+		Connection conn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+		try {
+			conn = connect.getConn();
+			stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			rs = stm.executeQuery(sql);
+			if(rs.next()){
+				jLaOrderId.setText(rs.getString("ORDER_ID"));
+				jLaEmp.setText(rs.getString("EMP_NAME")+" "+rs.getString("EMP_SURNAME"));
+				jLaOrderDate.setText(rs.getString("ORDER_DATE"));
+				jLaOrderTime.setText(rs.getString("ORDER_DATE_HR"));
+				jLaTotal.setText(rs.getString("TOTAL")+" บาท");
+			}
+			rs.close();
+			stm.close();
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	private void initOrderDetail(int Oid){
+		String sql = "SELECT OD.ORDER_ID, S.SIZE_NAME, S.PRICE, PR.PROMOTION_NAME "+
+					"FROM ORDER_DETAILS OD JOIN PRODUCTS P "+ 
+					"ON (OD.PRODUCT_ID = P.PRODUCT_ID) "+
+					"JOIN SIZES S "+
+					"ON (P.SIZE_ID = S.SIZE_ID) "+
+					"LEFT JOIN PROMOTIONS PR "+
+					"ON (P.COUNT = PR.PROMOTION_ID) "+
+					"WHERE OD.ORDER_ID ="+"'"+Oid+"'";
+		//String sql = "SELECT * FROM EMPLOYEES";
+		System.out.println(sql);
+		Connection conn = null;
+		Statement stm = null;
+		ResultSet rset = null;
+		try{
+			conn = connect.getConn(); 
+			stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			rset = stm.executeQuery(sql);
+			ResultSetTableModel rm = new ResultSetTableModel(rset);
+			jTableOdetail.setModel(rm);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * This method initializes this
+	 * 
+	 * @return void
+	 */
+	private void initialize() {
+		this.setSize(699, 394);
+		this.setContentPane(getJContentPane());
+		this.setTitle("JFrame");
+		/*
+		 * 
+		 * Center Screen
+		 * 
+		 */
+		Dimension d = this.getToolkit().getScreenSize();
+	    int screenWidth = d.width;
+	    int screenHeight = d.height;
+	    int centerX = screenWidth / 2;
+	    int centerY = screenHeight / 2;
+	    
+	    int xPos = centerX - this.getWidth() / 2;
+	    int yPos = centerY - this.getHeight() / 2;
+	    this.setLocation(xPos, yPos);   
+	    //End Center Screen
+		//My Code
+		connect = new Connect();
+	}
+
+	/**
+	 * This method initializes jContentPane
+	 * 
+	 * @return javax.swing.JPanel
+	 */
+	private JPanel getJContentPane() {
+		if (jContentPane == null) {
+			jLabelbg = new JLabel();
+			jLabelbg.setBounds(new Rectangle(0, 0, 684, 400));
+			jLabelbg.setIcon(new ImageIcon("C:/Users/Kaew/Desktop/IceCreamShopVer6/RedCarpet1/image/BGjpanel.png"));
+			jLabelbg.setText("JLabel");
+			jLaOrderId = new JLabel();
+			jLaOrderId.setBounds(new Rectangle(196, 21, 201, 16));
+			jLaOrderId.setText("JLabel");
+			jLaEmp = new JLabel();
+			jLaEmp.setBounds(new Rectangle(197, 45, 198, 16));
+			jLaEmp.setText("JLabel");
+			jLaTotal = new JLabel();
+			jLaTotal.setBounds(new Rectangle(196, 94, 201, 16));
+			jLaTotal.setText("JLabel");
+			jLaOrderTime = new JLabel();
+			jLaOrderTime.setBounds(new Rectangle(504, 69, 155, 16));
+			jLaOrderTime.setText("JLabel");
+			jLaOrderDate = new JLabel();
+			jLaOrderDate.setBounds(new Rectangle(197, 70, 200, 16));
+			jLaOrderDate.setText("JLabel");
+			jLabel4 = new JLabel();
+			jLabel4.setBounds(new Rectangle(20, 93, 67, 16));
+			jLabel4.setText("ยอดรวม");
+			jLabel3 = new JLabel();
+			jLabel3.setBounds(new Rectangle(431, 69, 59, 16));
+			jLabel3.setText("เวลาที่สั่ง");
+			jLabel2 = new JLabel();
+			jLabel2.setBounds(new Rectangle(20, 69, 155, 16));
+			jLabel2.setText("วันที่สั่ง");
+			jLabel1 = new JLabel();
+			jLabel1.setBounds(new Rectangle(20, 46, 155, 16));
+			jLabel1.setText("พนักงานที่รับผิดชอบ");
+			jLabel = new JLabel();
+			jLabel.setBounds(new Rectangle(20, 21, 154, 16));
+			jLabel.setText("เลขที่ใบสั่ง");
+			jContentPane = new JPanel();
+			jContentPane.setLayout(null);
+			jContentPane.add(getJPanelOdetail(), null);
+			jContentPane.add(getJButtonOK(), null);
+			jContentPane.add(jLabel, null);
+			jContentPane.add(jLabel1, null);
+			jContentPane.add(jLabel2, null);
+			jContentPane.add(jLabel3, null);
+			jContentPane.add(jLabel4, null);
+			jContentPane.add(jLaOrderDate, null);
+			jContentPane.add(jLaOrderTime, null);
+			jContentPane.add(jLaTotal, null);
+			jContentPane.add(jLaEmp, null);
+			jContentPane.add(jLaOrderId, null);
+			jContentPane.add(jLabelbg, null);
+		}
+		return jContentPane;
+	}
+
+	/**
+	 * This method initializes jScrollPaneOdetail	
+	 * 	
+	 * @return javax.swing.JScrollPane	
+	 */
+	private JScrollPane getJScrollPaneOdetail() {
+		if (jScrollPaneOdetail == null) {
+			jScrollPaneOdetail = new JScrollPane();
+			jScrollPaneOdetail.setViewportView(getJTableOdetail());
+		}
+		return jScrollPaneOdetail;
+	}
+
+	/**
+	 * This method initializes jTableOdetail	
+	 * 	
+	 * @return javax.swing.JTable	
+	 */
+	private JTable getJTableOdetail() {
+		if (jTableOdetail == null) {
+			jTableOdetail = new JTable();
+		}
+		return jTableOdetail;
+	}
+
+	/**
+	 * This method initializes jPanelOdetail	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanelOdetail() {
+		if (jPanelOdetail == null) {
+			GridBagConstraints gridBagConstraints = new GridBagConstraints();
+			gridBagConstraints.fill = GridBagConstraints.BOTH;
+			gridBagConstraints.weighty = 1.0;
+			gridBagConstraints.weightx = 1.0;
+			jPanelOdetail = new JPanel();
+			jPanelOdetail.setLayout(new GridBagLayout());
+			jPanelOdetail.setBounds(new Rectangle(15, 120, 661, 182));
+			jPanelOdetail.add(getJScrollPaneOdetail(), gridBagConstraints);
+		}
+		return jPanelOdetail;
+	}
+
+	/**
+	 * This method initializes jButtonOK	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButtonOK() {
+		if (jButtonOK == null) {
+			jButtonOK = new JButton();
+			jButtonOK.setBounds(new Rectangle(311, 310, 70, 35));
+			jButtonOK.setIcon(new ImageIcon("C:/Users/Kaew/Desktop/bok.png"));
+			jButtonOK.setText("");
+			jButtonOK.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+					close();
+				}
+			});
+		}
+		return jButtonOK;
+	}
+	private void close(){
+		this.dispose();
+	}
+	
+	
+
+}  //  @jve:decl-index=0:visual-constraint="10,-10"

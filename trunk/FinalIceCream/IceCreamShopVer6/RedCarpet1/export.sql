@@ -1,0 +1,470 @@
+--------------------------------------------------------
+--  File created - Monday-September-12-2011   
+--------------------------------------------------------
+  DROP TABLE "REDCARPET"."CONSISTS" cascade constraints;
+  DROP TABLE "REDCARPET"."EMPLOYEES" cascade constraints;
+  DROP TABLE "REDCARPET"."ORDER_DETAILS" cascade constraints;
+  DROP TABLE "REDCARPET"."ORDER_HEADS" cascade constraints;
+  DROP TABLE "REDCARPET"."PRODUCTS" cascade constraints;
+  DROP TABLE "REDCARPET"."PROMOTIONS" cascade constraints;
+  DROP TABLE "REDCARPET"."SIZES" cascade constraints;
+  DROP TABLE "REDCARPET"."STOCKS" cascade constraints;
+  DROP TABLE "REDCARPET"."STOCK_TYPES" cascade constraints;
+  DROP SEQUENCE "REDCARPET"."EMPLOYEES_SEQ";
+  DROP SEQUENCE "REDCARPET"."ORDER_HEADS_SEQ";
+  DROP SEQUENCE "REDCARPET"."PRODUCTS_SEQ";
+  DROP SEQUENCE "REDCARPET"."PROMOTIONS_SEQ";
+  DROP SEQUENCE "REDCARPET"."SIZES_SEQ";
+  DROP SEQUENCE "REDCARPET"."STOCKS_SEQ";
+  DROP SEQUENCE "REDCARPET"."STOCK_TYPES_SEQ";
+--------------------------------------------------------
+--  DDL for Sequence EMPLOYEES_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "REDCARPET"."EMPLOYEES_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 104 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence ORDER_HEADS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "REDCARPET"."ORDER_HEADS_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence PRODUCTS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "REDCARPET"."PRODUCTS_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence PROMOTIONS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "REDCARPET"."PROMOTIONS_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 13 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SIZES_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "REDCARPET"."SIZES_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 6 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence STOCKS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "REDCARPET"."STOCKS_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 8 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence STOCK_TYPES_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "REDCARPET"."STOCK_TYPES_SEQ"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Table CONSISTS
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."CONSISTS" 
+   (	"PRODUCT_ID" NUMBER(*,5), 
+	"STOCK_ID" NUMBER, 
+	"COUNT" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table EMPLOYEES
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."EMPLOYEES" 
+   (	"EMP_ID" NUMBER, 
+	"EMP_NAME" VARCHAR2(50 CHAR), 
+	"EMP_DOB" DATE, 
+	"EMP_LOG" DATE, 
+	"EMP_SURNAME" VARCHAR2(200 CHAR), 
+	"EMP_USER" VARCHAR2(20 CHAR), 
+	"EMP_PWD" VARCHAR2(20 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table ORDER_DETAILS
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."ORDER_DETAILS" 
+   (	"ORDER_ID" NUMBER, 
+	"PRODUCT_ID" NUMBER, 
+	"QUANTY" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table ORDER_HEADS
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."ORDER_HEADS" 
+   (	"ORDER_ID" NUMBER, 
+	"EMP_ID" NUMBER, 
+	"ORDER_DATE" DATE, 
+	"TOTAL" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table PRODUCTS
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."PRODUCTS" 
+   (	"PRODUCT_ID" NUMBER, 
+	"SIZE_ID" NUMBER, 
+	"COUNT" NUMBER, 
+	"PRODUCT_NAME" VARCHAR2(50 CHAR)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table PROMOTIONS
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."PROMOTIONS" 
+   (	"PROMOTION_ID" NUMBER, 
+	"PROMOTION_DESC" VARCHAR2(100 CHAR), 
+	"SIZE_ID" NUMBER, 
+	"DISCOUNT" NUMBER, 
+	"PROMOTION_START" DATE, 
+	"PROMOTION_END" DATE, 
+	"PROMOTION_NAME" VARCHAR2(50 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table SIZES
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."SIZES" 
+   (	"SIZE_ID" NUMBER, 
+	"SIZE_NAME" VARCHAR2(50 CHAR), 
+	"MAX_ICE_CREAM" NUMBER, 
+	"MAX_TOPPING" NUMBER, 
+	"PRICE" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table STOCKS
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."STOCKS" 
+   (	"STOCK_ID" NUMBER, 
+	"STOCK_NAME" VARCHAR2(100 CHAR), 
+	"STOCK_TYPE" NUMBER, 
+	"STOCK_QUANTY" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table STOCK_TYPES
+--------------------------------------------------------
+
+  CREATE TABLE "REDCARPET"."STOCK_TYPES" 
+   (	"TYPE_ID" NUMBER, 
+	"TYPE_NAME" VARCHAR2(30 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+---------------------------------------------------
+--   DATA FOR TABLE CONSISTS
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.CONSISTS
+
+---------------------------------------------------
+--   END DATA FOR TABLE CONSISTS
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE EMPLOYEES
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.EMPLOYEES
+Insert into REDCARPET.EMPLOYEES (EMP_ID,EMP_NAME,EMP_DOB,EMP_LOG,EMP_SURNAME,EMP_USER,EMP_PWD) values (103,'?????',to_timestamp('03-FEB-10 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('12-SEP-11 09.37.27.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'????????????','pingkung','s124578');
+Insert into REDCARPET.EMPLOYEES (EMP_ID,EMP_NAME,EMP_DOB,EMP_LOG,EMP_SURNAME,EMP_USER,EMP_PWD) values (101,'?????',to_timestamp('01-JAN-09 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('12-SEP-11 09.33.27.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'???????????','ping','123456');
+
+---------------------------------------------------
+--   END DATA FOR TABLE EMPLOYEES
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE ORDER_DETAILS
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.ORDER_DETAILS
+
+---------------------------------------------------
+--   END DATA FOR TABLE ORDER_DETAILS
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE ORDER_HEADS
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.ORDER_HEADS
+
+---------------------------------------------------
+--   END DATA FOR TABLE ORDER_HEADS
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE PRODUCTS
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.PRODUCTS
+
+---------------------------------------------------
+--   END DATA FOR TABLE PRODUCTS
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE PROMOTIONS
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.PROMOTIONS
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (7,'gfg',0,52,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'rtt');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (1,'assdf',3,5,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'????????????');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (5,'df',0,8,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'dfg');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (6,'df',0,5,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'er');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (8,'df',3,8,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'df');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (3,'df',0,8,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'er');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (4,'df',0,889,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'er');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (9,'df',5,8,to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('11-SEP-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'er');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (10,'erfg',4,5,to_timestamp('01-JAN-09 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('01-JAN-09 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'erfgfg');
+Insert into REDCARPET.PROMOTIONS (PROMOTION_ID,PROMOTION_DESC,SIZE_ID,DISCOUNT,PROMOTION_START,PROMOTION_END,PROMOTION_NAME) values (12,'??',4,8,to_timestamp('01-JAN-09 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),to_timestamp('01-JAN-11 12.00.00.000000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'??');
+
+---------------------------------------------------
+--   END DATA FOR TABLE PROMOTIONS
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE SIZES
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.SIZES
+Insert into REDCARPET.SIZES (SIZE_ID,SIZE_NAME,MAX_ICE_CREAM,MAX_TOPPING,PRICE) values (4,'M',6,2,250);
+Insert into REDCARPET.SIZES (SIZE_ID,SIZE_NAME,MAX_ICE_CREAM,MAX_TOPPING,PRICE) values (5,'L',5,5,60);
+
+---------------------------------------------------
+--   END DATA FOR TABLE SIZES
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE STOCKS
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.STOCKS
+Insert into REDCARPET.STOCKS (STOCK_ID,STOCK_NAME,STOCK_TYPE,STOCK_QUANTY) values (1,'Chocolate',1,50);
+Insert into REDCARPET.STOCKS (STOCK_ID,STOCK_NAME,STOCK_TYPE,STOCK_QUANTY) values (2,'Cherry',0,89);
+Insert into REDCARPET.STOCKS (STOCK_ID,STOCK_NAME,STOCK_TYPE,STOCK_QUANTY) values (7,'Vanila',2,89);
+
+---------------------------------------------------
+--   END DATA FOR TABLE STOCKS
+---------------------------------------------------
+
+
+---------------------------------------------------
+--   DATA FOR TABLE STOCK_TYPES
+--   FILTER = none used
+---------------------------------------------------
+REM INSERTING into REDCARPET.STOCK_TYPES
+Insert into REDCARPET.STOCK_TYPES (TYPE_ID,TYPE_NAME) values (1,'ICE-CREAM');
+Insert into REDCARPET.STOCK_TYPES (TYPE_ID,TYPE_NAME) values (2,'TOPPING');
+
+---------------------------------------------------
+--   END DATA FOR TABLE STOCK_TYPES
+---------------------------------------------------
+
+--------------------------------------------------------
+--  Constraints for Table CONSISTS
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."CONSISTS" ADD CONSTRAINT "CONSISTS_PK" PRIMARY KEY ("PRODUCT_ID", "STOCK_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."CONSISTS" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "REDCARPET"."CONSISTS" MODIFY ("STOCK_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PROMOTIONS
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."PROMOTIONS" ADD CONSTRAINT "PROMOTION_PK" PRIMARY KEY ("PROMOTION_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."PROMOTIONS" MODIFY ("PROMOTION_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table EMPLOYEES
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."EMPLOYEES" ADD CONSTRAINT "EMPLOYEES_PK" PRIMARY KEY ("EMP_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."EMPLOYEES" MODIFY ("EMP_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ORDER_HEADS
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."ORDER_HEADS" ADD CONSTRAINT "ORDER_HEADS_PK" PRIMARY KEY ("ORDER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."ORDER_HEADS" MODIFY ("ORDER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PRODUCTS
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."PRODUCTS" ADD CONSTRAINT "PRODUCTS_PK" PRIMARY KEY ("PRODUCT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."PRODUCTS" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SIZES
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."SIZES" ADD CONSTRAINT "SIZES_PK" PRIMARY KEY ("SIZE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."SIZES" MODIFY ("SIZE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table STOCK_TYPES
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."STOCK_TYPES" ADD CONSTRAINT "STOCK_TYPES_PK" PRIMARY KEY ("TYPE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."STOCK_TYPES" MODIFY ("TYPE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ORDER_DETAILS
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."ORDER_DETAILS" ADD CONSTRAINT "ORDER_DETAILS_PK" PRIMARY KEY ("ORDER_ID", "PRODUCT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."ORDER_DETAILS" MODIFY ("ORDER_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "REDCARPET"."ORDER_DETAILS" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table STOCKS
+--------------------------------------------------------
+
+  ALTER TABLE "REDCARPET"."STOCKS" ADD CONSTRAINT "STOCKS_PK" PRIMARY KEY ("STOCK_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "REDCARPET"."STOCKS" MODIFY ("STOCK_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  DDL for Index PRODUCTS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."PRODUCTS_PK" ON "REDCARPET"."PRODUCTS" ("PRODUCT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index EMPLOYEES_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."EMPLOYEES_PK" ON "REDCARPET"."EMPLOYEES" ("EMP_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SIZES_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."SIZES_PK" ON "REDCARPET"."SIZES" ("SIZE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index CONSISTS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."CONSISTS_PK" ON "REDCARPET"."CONSISTS" ("PRODUCT_ID", "STOCK_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index PROMOTION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."PROMOTION_PK" ON "REDCARPET"."PROMOTIONS" ("PROMOTION_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index ORDER_DETAILS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."ORDER_DETAILS_PK" ON "REDCARPET"."ORDER_DETAILS" ("ORDER_ID", "PRODUCT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index STOCK_TYPES_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."STOCK_TYPES_PK" ON "REDCARPET"."STOCK_TYPES" ("TYPE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index ORDER_HEADS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."ORDER_HEADS_PK" ON "REDCARPET"."ORDER_HEADS" ("ORDER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index STOCKS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REDCARPET"."STOCKS_PK" ON "REDCARPET"."STOCKS" ("STOCK_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+
+
+
+
+
+
+
+

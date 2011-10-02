@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc5_g.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc5dms.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc5dms_g.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc6_g.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc6dms.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/ojdbc6dms_g.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adminping/Desktop/DBproj/FinalIceCream/IceCreamShopVer6/RedCarpet1/jdbc/lib/simplefan.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
